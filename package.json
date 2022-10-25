@@ -1,0 +1,46 @@
+{
+  "name": "laravel-bridge",
+  "private": false,
+  "version": "0.0.0",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/my-lib.umd.cjs",
+  "module": "./dist/my-lib.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "commit": "cz",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.186",
+    "axios": "^1.1.3",
+    "lodash": "^4.17.21",
+    "path": "^0.12.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "url": "^0.11.0",
+    "uuid": "^9.0.0",
+    "vite-plugin-dts": "^1.6.6"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@types/uuid": "^8.3.4",
+    "@vitejs/plugin-react": "^2.1.0",
+    "commitizen": "^4.2.5",
+    "cz-conventional-changelog": "3.3.0",
+    "husky": "^8.0.1",
+    "typescript": "^4.6.4",
+    "vite": "^3.1.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
