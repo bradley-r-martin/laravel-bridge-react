@@ -1,7 +1,13 @@
 {
-  "name": "laravel-bridge",
+  "name": "@bradley-r-martin/laravel-bridge-react",
   "private": false,
   "version": "0.0.3",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "repository": {
+    "url": "git@github.com:bradley-r-martin/laravel-bridge-react.git"
+  },
   "type": "module",
   "files": [
     "dist"
