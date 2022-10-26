@@ -6,7 +6,7 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "repository": {
-    "url": "git@github.com:bradley-r-martin/laravel-bridge-react.git"
+    "url": "https://github.com/bradley-r-martin/laravel-bridge-react.git"
   },
   "type": "module",
   "files": [
