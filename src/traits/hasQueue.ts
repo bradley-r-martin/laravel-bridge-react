@@ -1,5 +1,5 @@
 import React from 'react'
-export default function hasQueue(process: boolean = true): {
+export default function hasQueue(process = true): {
   tasks: ReadonlyArray<Task>
   isProcessing: boolean
   addTask: (task: Task) => void

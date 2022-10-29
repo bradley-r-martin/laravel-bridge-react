@@ -1,6 +1,6 @@
-import { ControllerDataAction, ControllerDataState } from "./ControllerData";
-import { ControllerStatusAction } from "./ControllerStatus";
-import React, { Dispatch, FunctionComponent } from "react";
+import { ControllerDataAction, ControllerDataState } from './ControllerData';
+import { ControllerStatusAction } from './ControllerStatus';
+import React, { Dispatch, FunctionComponent } from 'react';
 interface ControllerProps {
     controller: string;
     children?: React.ReactNode;

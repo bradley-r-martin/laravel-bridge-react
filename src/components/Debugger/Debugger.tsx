@@ -6,9 +6,7 @@ import useController from '../../hooks/useController'
 import useData from '../../hooks/useData'
 import useStatus from '../../hooks/useStatus'
 
-interface DebuggerProps {}
-
-const Button = ({ onClick, active, children, ping }: any) => {
+const Button = ({ onClick, active, children }: any) => {
   const [loading, setLoading] = useState(false)
   return (
     <button
@@ -144,7 +142,7 @@ const Statuses = () => {
   )
 }
 
-const Debugger: FunctionComponent<DebuggerProps> = () => {
+const Debugger: FunctionComponent = () => {
   const [data, updateData, getData] = useData()
 
   const [stateKey, setStateKey] = useState('text.var')

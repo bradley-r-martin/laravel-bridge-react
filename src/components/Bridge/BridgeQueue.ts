@@ -109,7 +109,6 @@ export function hasBridgeQueue(
       })
         .then((response) => {
           jobs.map((queue) => {
-            const { ref } = queue
             const request = response.data.payload.find(
               ({ uuid }: any) => uuid === queue.ref.current.uuid,
             )
@@ -143,7 +142,6 @@ export function hasBridgeQueue(
           }
 
           jobs.map((queue) => {
-            const { ref } = queue
             queue.resolve(null)
           })
         })

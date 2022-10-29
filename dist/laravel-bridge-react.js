@@ -4438,8 +4438,8 @@ const hf = Li.exports.Fragment, B = Li.exports.jsx, Ce = Li.exports.jsxs, Z0 = (
   }) : /* @__PURE__ */ B(hf, {});
 };
 function X0(i) {
-  return typeof i != "string" && (i = JSON.stringify(i, void 0, 2)), i === void 0 ? '<span class="null">null</span>' : (i = i.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"), i.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function(o) {
-    var u = "number";
+  return typeof i != "string" && (i = JSON.stringify(i, void 0, 2)), i === void 0 ? '<span class="null">null</span>' : (i = i.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"), i.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g, function(o) {
+    let u = "number";
     return /^"/.test(o) ? /:$/.test(o) ? u = "key" : u = "string" : /true|false/.test(o) ? u = "boolean" : /null/.test(o) && (u = "null"), '<span class="' + u + '">' + o + "</span>";
   }));
 }
@@ -4458,9 +4458,7 @@ const Q0 = (i) => {
 function Wt() {
   const i = Rr(cf);
   if (!i)
-    throw new Error(
-      "You cannot use useController outside of a Controller component"
-    );
+    throw new Error("You cannot use useController outside of a Controller component");
   return i;
 }
 function V0() {
@@ -4472,26 +4470,23 @@ function V0() {
 function br() {
   const i = Rr(ff);
   if (!i)
-    throw new Error(
-      "You cannot use useStatus outside of a Controller component"
-    );
+    throw new Error("You cannot use useStatus outside of a Controller component");
   return i;
 }
 const Gt = ({
   onClick: i,
   active: o,
-  children: u,
-  ping: l
+  children: u
 }) => {
-  const [v, m] = hs(!1);
+  const [l, v] = hs(!1);
   return /* @__PURE__ */ Ce("button", {
-    disabled: v,
+    disabled: l,
     className: `${o ? "bg-slate-100 text-slate-400 pointer-events-none" : "bg-slate-200 hover:bg-slate-300 text-slate-600"} px-2 p-1 flex items-center justify-center space-x-2 relative text-xs`,
     onClick: () => {
-      m(!0), i().then(() => m(!1));
+      v(!0), i().then(() => v(!1));
     },
     children: [/* @__PURE__ */ B(Z0, {
-      show: v
+      show: l
     }), /* @__PURE__ */ B("span", {
       children: u
     })]
@@ -5978,9 +5973,7 @@ function mv(i, o) {
   }
 }
 function Ev(i, o) {
-  const u = Ni(mv, vv), [l, v] = u, m = l.filter(({ isDispatched: A }) => !A), g = i.filter(
-    (A) => !m.find((C) => C.ref === A)
-  );
+  const u = Ni(mv, vv), [l, v] = u, m = l.filter(({ isDispatched: A }) => !A), g = i.filter((A) => !m.find((C) => C.ref === A));
   return ss(() => {
     if (m.length > 0) {
       const A = g.map((O) => {
@@ -6248,9 +6241,9 @@ const Rv = (i) => {
                     "aria-hidden": "true",
                     className: "h-4 w-4",
                     children: /* @__PURE__ */ B("path", {
-                      "fill-rule": "evenodd",
+                      fillRule: "evenodd",
                       d: "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z",
-                      "clip-rule": "evenodd"
+                      clipRule: "evenodd"
                     })
                   })
                 })
@@ -6280,9 +6273,7 @@ function Tv(i) {
 function Av() {
   const i = Rr(lf);
   if (!i)
-    throw new Error(
-      "You cannot use useActions outside of a Controller component"
-    );
+    throw new Error("You cannot use useActions outside of a Controller component");
   return i;
 }
 export {

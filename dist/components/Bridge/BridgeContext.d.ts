@@ -1,5 +1,5 @@
-import { MutableRefObject } from "react";
-import { ControllerReference } from "../Controller/Controller";
+import { MutableRefObject } from 'react';
+import { ControllerReference } from '../Controller/Controller';
 interface BridgeContext {
     call: (ref: MutableRefObject<ControllerReference>, method: string, payload?: any) => Promise<void>;
     fresh: (ref: MutableRefObject<ControllerReference>) => Promise<void>;
