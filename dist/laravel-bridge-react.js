@@ -4763,17 +4763,18 @@ const d_ = (i) => {
   });
 };
 function Sv(i, o) {
-  return (u) => {
+  const u = (l) => {
     const {
-      ...l
-    } = u;
+      ...v
+    } = l;
     return /* @__PURE__ */ B(d_, {
       controller: i,
       children: /* @__PURE__ */ B(o, {
-        ...l
+        ...v
       })
     });
   };
+  return u.displayName = "useController(WrappedComponent)", u;
 }
 function pf(i, o) {
   return function() {
@@ -6259,16 +6260,17 @@ const Rv = (i) => {
   });
 };
 function Tv(i) {
-  return (o) => {
+  const o = (u) => {
     const {
-      ...u
-    } = o;
+      ...l
+    } = u;
     return /* @__PURE__ */ B(Rv, {
       children: /* @__PURE__ */ B(i, {
-        ...u
+        ...l
       })
     });
   };
+  return o.displayName = "useBridge(WrapperComponent)", o;
 }
 function Av() {
   const i = Rr(lf);
