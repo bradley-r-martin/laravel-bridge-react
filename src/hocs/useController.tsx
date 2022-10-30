@@ -1,19 +1,18 @@
-import Controller from "../components/Controller/Controller";
-import React from "react";
+import Controller from '../components/Controller/Controller'
+import React from 'react'
 
-export interface ComponentProps {}
-
-export default function useController<T>(
+export default function useController<T extends object>(
   controller: string,
-  Component: React.ComponentType<T>
+  Component: React.ComponentType<T>,
 ) {
-  return (props: T) => {
-    const { ...native } = props;
+  const WrappedComponent = (props: T) => {
+    const { ...native } = props
     return (
       <Controller controller={controller}>
-        {/* @ts-ignore */}
         <Component {...native} />
       </Controller>
-    );
-  };
+    )
+  }
+  WrappedComponent.displayName = 'useController(WrappedComponent)'
+  return WrappedComponent
 }

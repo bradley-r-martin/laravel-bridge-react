@@ -1,29 +1,26 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer } from 'react'
 
-import { set } from "lodash";
+import { set } from 'lodash'
 
 export enum ControllerDataActions {
-  SET = "SET",
-  REPLACE = "REPLACE",
+  SET = 'SET',
+  REPLACE = 'REPLACE',
 }
 
 export interface ControllerDataAction {
-  type: ControllerDataActions;
-  name: string;
-  value: any;
+  type: ControllerDataActions
+  name: string
+  value: any
 }
 
 export interface ControllerDataState {
-  [key: string | number]: any;
+  [key: string | number]: any
 }
 
-export const initial = {};
+export const initial = {}
 
-export function controllerDataReducer(
-  state: ControllerDataState,
-  action: ControllerDataAction
-) {
-  const { type, name, value } = action;
+export function controllerDataReducer(state: ControllerDataState, action: ControllerDataAction) {
+  const { type, name, value } = action
   switch (type) {
     case ControllerDataActions.SET:
       return set(
@@ -31,18 +28,18 @@ export function controllerDataReducer(
           ...state,
         },
         name,
-        value
-      );
+        value,
+      )
     case ControllerDataActions.REPLACE:
-      return { ...value };
+      return { ...value }
     default:
-      return state;
+      return state
   }
 }
 
-export default createContext<[ControllerDataState, any, any] | null>(null);
+export default createContext<[ControllerDataState, any, any] | null>(null)
 
 export function hasControllerData() {
-  const reducer = useReducer(controllerDataReducer, initial);
-  return reducer;
+  const reducer = useReducer(controllerDataReducer, initial)
+  return reducer
 }

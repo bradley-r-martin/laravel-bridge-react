@@ -1,13 +1,13 @@
-import { Dispatch, MutableRefObject, SetStateAction } from "react";
-import { BridgeRegistrationState } from "./BridgeRegistration";
-import { ControllerReference } from "../Controller/Controller";
+import { Dispatch, MutableRefObject, SetStateAction } from 'react';
+import { BridgeRegistrationState } from './BridgeRegistration';
+import { ControllerReference } from '../Controller/Controller';
 export declare enum BridgeQueueActions {
     QUEUE = "QUEUE",
     DISPATCH = "DISPATCH",
     RELEASED = "RELEASED"
 }
 export declare type Action = {
-    type: "MOUNT" | "SYNC" | "FRESH" | "CALL";
+    type: 'MOUNT' | 'SYNC' | 'FRESH' | 'CALL';
     state: any;
     props: any;
     uuid: string;

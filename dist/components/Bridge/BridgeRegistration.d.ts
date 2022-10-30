@@ -1,5 +1,5 @@
-import { MutableRefObject } from "react";
-import { ControllerReference } from "../Controller/Controller";
+import { MutableRefObject } from 'react';
+import { ControllerReference } from '../Controller/Controller';
 export declare enum BridgeRegistrationActions {
     REGISTERING = "REGISTERING",
     REGISTERED = "REGISTERED",

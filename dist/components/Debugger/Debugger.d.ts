@@ -1,5 +1,3 @@
-import { FunctionComponent } from "react";
-interface DebuggerProps {
-}
-declare const Debugger: FunctionComponent<DebuggerProps>;
+import { FunctionComponent } from 'react';
+declare const Debugger: FunctionComponent;
 export default Debugger;
