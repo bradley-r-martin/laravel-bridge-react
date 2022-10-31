@@ -141,6 +141,8 @@ export function hasBridgeQueue(
             // validation
           } else {
             setHtmlResponse(error)
+            console.log(error)
+            throw new Error(error)
           }
 
           jobs.map((queue) => {
