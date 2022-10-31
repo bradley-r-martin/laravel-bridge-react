@@ -28,7 +28,7 @@ export interface ControllerReference {
 }
 
 const Controller: FunctionComponent<ControllerProps> = (props) => {
-  const { children } = props
+  const { children, ...additionalProps } = props
   const uuid = useMemo(() => uuidv4(), [])
   const bridge = useBridge()
 
@@ -45,7 +45,7 @@ const Controller: FunctionComponent<ControllerProps> = (props) => {
   ref.current.dispatchStatus = dispatchStatus
   ref.current.dispatchData = dispatchData
   ref.current.data = data
-  ref.current.props = props
+  ref.current.props = additionalProps
   ref.current.uuid = uuid
 
   function call(method: string, payload: any) {
