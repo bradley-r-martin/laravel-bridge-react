@@ -96,7 +96,6 @@ const Controller: FunctionComponent<ControllerProps> = (props) => {
       <ControllerActionsContext.Provider value={{ call, fresh }}>
         <ControllerStatus.Provider value={statuses}>
           <ControllerData.Provider value={[data, setData, getData]}>
-            <Debugger />
             {children}
           </ControllerData.Provider>
         </ControllerStatus.Provider>
