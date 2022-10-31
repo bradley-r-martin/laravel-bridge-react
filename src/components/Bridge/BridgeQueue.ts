@@ -99,7 +99,7 @@ export function hasBridgeQueue(
       const debug = true
       axios({
         method: 'post',
-        url: 'http://localhost:9999/bridge',
+        url: '/bridge',
         data: debug ? payload : btoa(JSON.stringify(payload)),
         headers: {
           'Content-Type': 'application/json',
