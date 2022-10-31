@@ -6000,7 +6000,7 @@ function Ev(i, o) {
         ({ ref: { current: O } }) => O.dispatchStatus({ type: ve.DISPATCHED })
       ), console.log("Jobs on this round", A), console.log("sending payload to server", C), Ge({
         method: "post",
-        url: "http://localhost:9999/bridge",
+        url: "/bridge",
         data: C,
         headers: {
           "Content-Type": "application/json",

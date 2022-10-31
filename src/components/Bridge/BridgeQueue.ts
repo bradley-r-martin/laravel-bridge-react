@@ -139,6 +139,8 @@ export function hasBridgeQueue(
             window.location.assign(new URL(response.data.redirect).pathname)
           } else if (response?.status === 422) {
             // validation
+          } else {
+            setHtmlResponse(error)
           }
 
           jobs.map((queue) => {
