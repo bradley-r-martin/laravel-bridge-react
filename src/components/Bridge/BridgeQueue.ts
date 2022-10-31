@@ -56,6 +56,7 @@ export function bridgeQueueReducer(state: BridgeQueueState[], action: BridgeQueu
 export function hasBridgeQueue(
   refs: BridgeRegistrationState,
   setHtmlResponse: Dispatch<SetStateAction<string | undefined>>,
+  onRedirect: (location: string) => void,
 ) {
   const reducer = useReducer(bridgeQueueReducer, initial)
   const [queued, dispatchQueue] = reducer
@@ -124,7 +125,10 @@ export function hasBridgeQueue(
         .catch((error) => {
           const { response } = error
 
-          if (response?.status === 404) {
+          if (response?.data?.redirect) {
+            // redirect
+            onRedirect(new URL(response.data.redirect).pathname)
+          } else if (response?.status === 404) {
             // bridge not found
           } else if (response?.status === 500) {
             // server error

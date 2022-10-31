@@ -9,6 +9,7 @@ import { syntaxHighlight } from '../Syntax/Syntax'
 
 interface BridgeProps {
   children: React.ReactNode
+  onRedirect?: (location: string) => void
 }
 
 const Bridge: FunctionComponent<BridgeProps> = (props) => {
@@ -16,7 +17,13 @@ const Bridge: FunctionComponent<BridgeProps> = (props) => {
   const [htmlResponse, setHtmlResponse] = useState<string>()
   const [refs, dispatchRegistration] = hasBridgeRegistration()
 
-  const [, dispatchQueue] = hasBridgeQueue(refs, setHtmlResponse)
+  function onRedirect(location: string) {
+    if (props.onRedirect) {
+      props.onRedirect(location)
+    }
+  }
+
+  const [, dispatchQueue] = hasBridgeQueue(refs, setHtmlResponse, onRedirect)
 
   function call(ref: MutableRefObject<ControllerReference>, method: string, payload: any) {
     const { dispatchStatus } = ref.current
