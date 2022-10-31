@@ -13,8 +13,8 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/my-lib.umd.cjs",
-  "module": "./dist/my-lib.js",
+  "main": "./dist/laravel-bridge-react.umd.cjs",
+  "module": "./dist/laravel-bridge-react.js",
   "types": "./dist/index.d.ts",
   "scripts": {
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx,json}'",
