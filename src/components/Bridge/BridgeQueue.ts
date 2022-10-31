@@ -121,6 +121,10 @@ export function hasBridgeQueue(
             })
             queue.resolve(request?.response)
           })
+          if (response?.data?.redirect) {
+            // redirect
+            onRedirect(new URL(response.data.redirect).pathname)
+          }
         })
         .catch((error) => {
           const { response } = error
