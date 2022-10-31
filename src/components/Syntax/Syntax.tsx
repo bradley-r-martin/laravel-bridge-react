@@ -4,7 +4,7 @@ interface DebugProps {
   json: any
 }
 
-function syntaxHighlight(json: any) {
+export function syntaxHighlight(json: any) {
   if (typeof json != 'string') {
     json = JSON.stringify(json, undefined, 2)
   }

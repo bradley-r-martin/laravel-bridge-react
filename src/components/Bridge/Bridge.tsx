@@ -5,6 +5,7 @@ import React, { FunctionComponent, MutableRefObject, useState } from 'react'
 import BridgeContext from './BridgeContext'
 import { ControllerReference } from '../Controller/Controller'
 import { ControllerStatusActions } from '../Controller/ControllerStatus'
+import { syntaxHighlight } from '../Syntax/Syntax'
 
 interface BridgeProps {
   children: React.ReactNode
@@ -125,10 +126,15 @@ const Bridge: FunctionComponent<BridgeProps> = (props) => {
     }
     const doc = frame.contentDocument
     doc?.open()
-    doc?.write(`${htmlResponse}`)
+    if (typeof htmlResponse === 'string') {
+      doc?.write(`${htmlResponse}`)
+    } else {
+      doc?.write(syntaxHighlight(htmlResponse))
+    }
+
     doc?.close()
   }
-  const isDark = !htmlResponse?.includes('window.ignite')
+  const isDark = !`${htmlResponse}`.includes('window.ignite')
   return (
     <BridgeContext.Provider value={{ call, fresh, mount, unmount, register, deregister }}>
       {htmlResponse ? (
