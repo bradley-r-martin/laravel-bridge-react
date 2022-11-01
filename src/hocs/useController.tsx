@@ -8,7 +8,7 @@ export default function useController<T extends object>(
   const WrappedComponent = (props: T) => {
     const { ...native } = props
     return (
-      <Controller controller={controller}>
+      <Controller controller={controller} {...native}>
         <Component {...native} />
       </Controller>
     )

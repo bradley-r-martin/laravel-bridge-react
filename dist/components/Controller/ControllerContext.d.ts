@@ -1,5 +1,6 @@
 export interface ControllerContext {
     call: (method: string, payload?: any) => Promise<void>;
+    sync: () => Promise<void>;
     fresh: () => Promise<void>;
     mount: () => Promise<void>;
     unmount: () => Promise<void>;
