@@ -4,6 +4,7 @@ import { ControllerReference } from '../Controller/Controller'
 
 interface BridgeContext {
   call: (ref: MutableRefObject<ControllerReference>, method: string, payload?: any) => Promise<void>
+  sync: (ref: MutableRefObject<ControllerReference>) => Promise<void>
   fresh: (ref: MutableRefObject<ControllerReference>) => Promise<void>
   mount: (ref: MutableRefObject<ControllerReference>) => Promise<void>
   unmount: (ref: MutableRefObject<ControllerReference>) => Promise<void>

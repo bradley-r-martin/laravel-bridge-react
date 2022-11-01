@@ -51,6 +51,9 @@ const Controller: FunctionComponent<ControllerProps> = (props) => {
   function call(method: string, payload: any) {
     return new Promise<void>((resolve) => bridge.call(ref, method, payload).then(resolve))
   }
+  function sync() {
+    return new Promise<void>((resolve) => bridge.sync(ref).then(resolve))
+  }
   function fresh() {
     return new Promise<void>((resolve) => bridge.fresh(ref).then(resolve))
   }
@@ -66,8 +69,11 @@ const Controller: FunctionComponent<ControllerProps> = (props) => {
   function deregister() {
     return new Promise<void>((resolve) => bridge.deregister(ref).then(resolve))
   }
-  function setData(name: string, value: any) {
+  function setData(name: string, value: any, instantly = false) {
     dispatchData({ type: ControllerDataActions.SET, name, value })
+    if (instantly) {
+      return sync()
+    }
   }
   function getData(name: string, initial?: any) {
     return get(data, name, initial)
@@ -92,8 +98,8 @@ const Controller: FunctionComponent<ControllerProps> = (props) => {
   }, [statuses.isRegistered])
 
   return (
-    <ControllerContext.Provider value={{ call, fresh, mount, unmount, register, deregister }}>
-      <ControllerActionsContext.Provider value={{ call, fresh }}>
+    <ControllerContext.Provider value={{ call, fresh, mount, unmount, register, deregister, sync }}>
+      <ControllerActionsContext.Provider value={{ call, fresh, sync }}>
         <ControllerStatus.Provider value={statuses}>
           <ControllerData.Provider value={[data, setData, getData]}>
             {children}

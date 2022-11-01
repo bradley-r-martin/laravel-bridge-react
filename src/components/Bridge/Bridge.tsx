@@ -46,6 +46,25 @@ const Bridge: FunctionComponent<BridgeProps> = (props) => {
       })
     })
   }
+  function sync(ref: MutableRefObject<ControllerReference>) {
+    const { dispatchStatus } = ref.current
+    return new Promise<void>((resolve) => {
+      dispatchStatus({ type: ControllerStatusActions.DISPATCHED })
+      dispatchQueue({
+        type: BridgeQueueActions.QUEUE,
+        payload: {
+          resolve,
+          ref,
+          action: {
+            uuid: ref.current.uuid,
+            type: 'SYNC',
+            state: ref.current.data,
+            props: ref.current.props,
+          },
+        },
+      })
+    })
+  }
   function fresh(ref: MutableRefObject<ControllerReference>) {
     const { dispatchStatus } = ref.current
     return new Promise<void>((resolve) => {
@@ -143,7 +162,7 @@ const Bridge: FunctionComponent<BridgeProps> = (props) => {
   }
   const isDark = !`${htmlResponse}`.includes('window.ignite')
   return (
-    <BridgeContext.Provider value={{ call, fresh, mount, unmount, register, deregister }}>
+    <BridgeContext.Provider value={{ call, fresh, mount, unmount, register, deregister, sync }}>
       {htmlResponse ? (
         <>
           <div className='fixed inset-0 bg-black bg-opacity-75' style={{ zIndex: 9999 }}>
