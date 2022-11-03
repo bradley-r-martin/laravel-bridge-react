@@ -5,7 +5,7 @@ import ControllerData, {
   hasControllerData,
 } from './ControllerData'
 import ControllerStatus, { ControllerStatusAction, hasControllerStatus } from './ControllerStatus'
-import React, { Dispatch, FunctionComponent, useEffect, useMemo, useRef } from 'react'
+import React, { Dispatch, FunctionComponent, useEffect, useMemo, useRef, useState } from 'react'
 
 import ControllerActionsContext from './ControllerActionsContext'
 import ControllerContext from './ControllerContext'
@@ -31,6 +31,8 @@ const Controller: FunctionComponent<ControllerProps> = (props) => {
   const { children, ...additionalProps } = props
   const uuid = useMemo(() => uuidv4(), [])
   const bridge = useBridge()
+
+  const [mustSync, setMustSync] = useState(false)
 
   const [data, dispatchData] = hasControllerData()
   const [statuses, dispatchStatus] = hasControllerStatus()
@@ -71,8 +73,15 @@ const Controller: FunctionComponent<ControllerProps> = (props) => {
   }
   function setData(name: string, value: any, instantly = false) {
     dispatchData({ type: ControllerDataActions.SET, name, value })
+
     if (instantly) {
-      return sync()
+      return new Promise((resolve) => {
+        // Not great, however as react state is async we need to wait for it to be applied before running the sync.
+        // But we also need to return a promise that we are sending to the server.
+        setTimeout(() => {
+          sync().then(resolve)
+        }, 1)
+      })
     }
   }
   function getData(name: string, initial?: any) {

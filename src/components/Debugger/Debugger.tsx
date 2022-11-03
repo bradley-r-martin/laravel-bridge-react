@@ -194,6 +194,35 @@ const Debugger: FunctionComponent = () => {
                 className='bg-slate-100 border border-slate-200 p-1'
               />
             </div>
+            <div className='text-xs flex items-center space-x-2'>
+              <div className='text-slate-500'>instant var:</div>
+              <input
+                type='text'
+                value={stateKey}
+                onChange={(e) => setStateKey(e.target.value)}
+                className='bg-slate-100 border border-slate-200 p-1'
+              />
+              <input
+                type='text'
+                value={`${getData(stateKey, '')}`}
+                // ^ Convert all to text
+                onChange={(e) => {
+                  let input: any = e.target.value
+                  if (!isNaN(parseInt(input))) {
+                    input = parseInt(input)
+                  }
+                  if (input === 'true') {
+                    input = true
+                  }
+                  if (input === 'false') {
+                    input = false
+                  }
+
+                  updateData(stateKey, input, true)
+                }}
+                className='bg-slate-100 border border-slate-200 p-1'
+              />
+            </div>
           </div>
           <div className='flex flex-col space-y-1 flex-1'>
             <div className='text-xs text-slate-500'>State</div>
