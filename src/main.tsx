@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 import Bridge from './components/Bridge/Bridge'
 import Controller from './components/Controller/Controller'
+import { Debugger } from './expose'
 import ReactDOM from 'react-dom/client'
 
 const Toggle = () => {
@@ -11,7 +12,11 @@ const Toggle = () => {
       <button className='p-1 text-xs bg-slate-100' onClick={() => setToggle(!toggle)}>
         Toggle
       </button>
-      {toggle ? <Controller controller='App\\Http\\Controllers\\Another'></Controller> : null}
+      {toggle ? (
+        <Controller controller='App\\Http\\Controllers\\Another'>
+          <Debugger />
+        </Controller>
+      ) : null}
     </>
   )
 }
@@ -25,8 +30,12 @@ const ToggleTwo = () => {
       </button>
       {toggle ? (
         <>
-          <Controller controller='App\Http\Controllers\another'></Controller>
-          <Controller controller='App\Http\Controllers\Another'></Controller>
+          <Controller controller='App\Http\Controllers\another'>
+            <Debugger />
+          </Controller>
+          <Controller controller='App\Http\Controllers\Another'>
+            <Debugger />
+          </Controller>
         </>
       ) : null}
     </>
@@ -36,8 +45,12 @@ const ToggleTwo = () => {
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Bridge>
-      <Controller controller='App\Http\Controllers\Test'></Controller>
-      <Controller controller='App\Http\Controllers\Test'></Controller>
+      <Controller controller='App\Http\Controllers\Test'>
+        <Debugger />
+      </Controller>
+      <Controller controller='App\Http\Controllers\Test'>
+        <Debugger />
+      </Controller>
       <Toggle />
       <ToggleTwo />
     </Bridge>

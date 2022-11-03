@@ -4490,6 +4490,7 @@ function Sv(i, o) {
     } = l;
     return /* @__PURE__ */ G(t_, {
       controller: i,
+      ..._,
       children: /* @__PURE__ */ G(o, {
         ..._
       })
