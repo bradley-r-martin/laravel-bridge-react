@@ -6405,5 +6405,6 @@ export {
   I_ as useBridge,
   P_ as useController,
   w_ as useData,
+  x_ as useExceptions,
   Or as useStatus
 };
