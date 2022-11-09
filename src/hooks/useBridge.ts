@@ -1,5 +1,5 @@
-import BridgeContext from '../components/Bridge/BridgeContext'
 import { useContext } from 'react'
+import BridgeContext from '../components/Bridge/BridgeContext'
 
 export default function useBridge() {
   const context = useContext(BridgeContext)

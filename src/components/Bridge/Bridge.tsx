@@ -1,11 +1,11 @@
+import React, { FunctionComponent, MutableRefObject, useState } from 'react'
 import { BridgeQueueActions, hasBridgeQueue } from './BridgeQueue'
 import { BridgeRegistrationActions, hasBridgeRegistration } from './BridgeRegistration'
-import React, { FunctionComponent, MutableRefObject, useState } from 'react'
 
-import BridgeContext from './BridgeContext'
 import { ControllerReference } from '../Controller/Controller'
 import { ControllerStatusActions } from '../Controller/ControllerStatus'
 import { syntaxHighlight } from '../Syntax/Syntax'
+import BridgeContext from './BridgeContext'
 
 interface BridgeProps {
   children: React.ReactNode

@@ -2,6 +2,7 @@ import { Dispatch, MutableRefObject, SetStateAction, useEffect, useReducer } fro
 
 import { BridgeRegistrationState } from './BridgeRegistration'
 import { ControllerDataActions } from '../Controller/ControllerData'
+import { ControllerExceptionsActions } from '../Controller/ControllerExceptions'
 import { ControllerReference } from '../Controller/Controller'
 import { ControllerStatusActions } from '../Controller/ControllerStatus'
 import axios from 'axios'
@@ -113,6 +114,11 @@ export function hasBridgeQueue(
             const request = response.data.payload.find(
               ({ uuid }: any) => uuid === queue.ref.current.uuid,
             )
+
+            queue.ref.current.dispatchExceptions({
+              type: ControllerExceptionsActions.SYNC,
+              exceptions: request?.exceptions,
+            })
 
             queue.ref.current.dispatchData({
               type: ControllerDataActions.REPLACE,

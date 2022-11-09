@@ -1,5 +1,5 @@
-import Bridge from '../components/Bridge/Bridge'
 import React from 'react'
+import Bridge from '../components/Bridge/Bridge'
 
 export default function useBridge<T extends object>(Component: React.ComponentType<T>) {
   const WrapperComponent = (props: T) => {

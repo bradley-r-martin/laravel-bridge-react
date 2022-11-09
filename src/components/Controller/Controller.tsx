@@ -4,12 +4,15 @@ import ControllerData, {
   ControllerDataState,
   hasControllerData,
 } from './ControllerData'
+import ControllerExceptions, {
+  ControllerExceptionsAction,
+  hasControllerExceptions,
+} from './ControllerExceptions'
 import ControllerStatus, { ControllerStatusAction, hasControllerStatus } from './ControllerStatus'
 import React, { Dispatch, FunctionComponent, useEffect, useMemo, useRef, useState } from 'react'
 
 import ControllerActionsContext from './ControllerActionsContext'
 import ControllerContext from './ControllerContext'
-import Debugger from '../Debugger/Debugger'
 import { get } from 'lodash'
 import useBridge from '../../hooks/useBridge'
 import { v4 as uuidv4 } from 'uuid'
@@ -25,6 +28,7 @@ export interface ControllerReference {
   data: ControllerDataState
   dispatchData: Dispatch<ControllerDataAction>
   dispatchStatus: Dispatch<ControllerStatusAction>
+  dispatchExceptions: Dispatch<ControllerExceptionsAction>
 }
 
 const Controller: FunctionComponent<ControllerProps> = (props) => {
@@ -34,18 +38,21 @@ const Controller: FunctionComponent<ControllerProps> = (props) => {
 
   const [mustSync, setMustSync] = useState(false)
 
+  const [exceptions, dispatchExceptions] = hasControllerExceptions()
   const [data, dispatchData] = hasControllerData()
   const [statuses, dispatchStatus] = hasControllerStatus()
 
   const ref = useRef<ControllerReference>({
     dispatchStatus,
     dispatchData,
+    dispatchExceptions,
     data,
     props,
     uuid,
   })
   ref.current.dispatchStatus = dispatchStatus
   ref.current.dispatchData = dispatchData
+  ref.current.dispatchExceptions = dispatchExceptions
   ref.current.data = data
   ref.current.props = additionalProps
   ref.current.uuid = uuid
@@ -87,6 +94,9 @@ const Controller: FunctionComponent<ControllerProps> = (props) => {
   function getData(name: string, initial?: any) {
     return get(data, name, initial)
   }
+  function getExceptions(name: string) {
+    return get(exceptions, name)
+  }
 
   useEffect(() => {
     register()
@@ -111,7 +121,9 @@ const Controller: FunctionComponent<ControllerProps> = (props) => {
       <ControllerActionsContext.Provider value={{ call, fresh, sync }}>
         <ControllerStatus.Provider value={statuses}>
           <ControllerData.Provider value={[data, setData, getData]}>
-            {children}
+            <ControllerExceptions.Provider value={[exceptions, getExceptions]}>
+              {children}
+            </ControllerExceptions.Provider>
           </ControllerData.Provider>
         </ControllerStatus.Provider>
       </ControllerActionsContext.Provider>
