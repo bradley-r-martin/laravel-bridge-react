@@ -1,6 +1,6 @@
 import { Dispatch, MutableRefObject, SetStateAction } from 'react';
-import { BridgeRegistrationState } from './BridgeRegistration';
 import { ControllerReference } from '../Controller/Controller';
+import { BridgeRegistrationState } from './BridgeRegistration';
 export declare enum BridgeQueueActions {
     QUEUE = "QUEUE",
     DISPATCH = "DISPATCH",

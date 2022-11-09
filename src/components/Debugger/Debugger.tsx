@@ -1,11 +1,11 @@
 import React, { FunctionComponent, useState } from 'react'
 
 import LoadingIndicator from '../../../src/examples/LoadingIndicator'
-import Syntax from '../Syntax/Syntax'
 import useController from '../../hooks/useController'
 import useData from '../../hooks/useData'
 import useExceptions from '../../hooks/useExceptions'
 import useStatus from '../../hooks/useStatus'
+import Syntax from '../Syntax/Syntax'
 
 const Button = ({ onClick, active, children }: any) => {
   const [loading, setLoading] = useState(false)

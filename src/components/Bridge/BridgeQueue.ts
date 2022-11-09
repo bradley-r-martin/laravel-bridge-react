@@ -1,11 +1,11 @@
 import { Dispatch, MutableRefObject, SetStateAction, useEffect, useReducer } from 'react'
 
-import { BridgeRegistrationState } from './BridgeRegistration'
+import axios from 'axios'
+import { ControllerReference } from '../Controller/Controller'
 import { ControllerDataActions } from '../Controller/ControllerData'
 import { ControllerExceptionsActions } from '../Controller/ControllerExceptions'
-import { ControllerReference } from '../Controller/Controller'
 import { ControllerStatusActions } from '../Controller/ControllerStatus'
-import axios from 'axios'
+import { BridgeRegistrationState } from './BridgeRegistration'
 
 // An enum with all the types of actions to use in our reducer
 export enum BridgeQueueActions {

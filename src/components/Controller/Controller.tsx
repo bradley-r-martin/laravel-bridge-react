@@ -1,3 +1,4 @@
+import React, { Dispatch, FunctionComponent, useEffect, useMemo, useRef, useState } from 'react'
 import ControllerData, {
   ControllerDataAction,
   ControllerDataActions,
@@ -9,13 +10,12 @@ import ControllerExceptions, {
   hasControllerExceptions,
 } from './ControllerExceptions'
 import ControllerStatus, { ControllerStatusAction, hasControllerStatus } from './ControllerStatus'
-import React, { Dispatch, FunctionComponent, useEffect, useMemo, useRef, useState } from 'react'
 
+import { get } from 'lodash'
+import { v4 as uuidv4 } from 'uuid'
+import useBridge from '../../hooks/useBridge'
 import ControllerActionsContext from './ControllerActionsContext'
 import ControllerContext from './ControllerContext'
-import { get } from 'lodash'
-import useBridge from '../../hooks/useBridge'
-import { v4 as uuidv4 } from 'uuid'
 
 interface ControllerProps {
   controller: string
