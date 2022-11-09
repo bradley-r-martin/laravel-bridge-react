@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
-import Bridge from '../components/Bridge/Bridge'
 import React from 'react'
+import Bridge from '../components/Bridge/Bridge'
 
 export default {
   title: 'Bridge',

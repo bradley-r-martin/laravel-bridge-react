@@ -1,5 +1,5 @@
-import ControllerContext from '../components/Controller/ControllerContext'
 import { useContext } from 'react'
+import ControllerContext from '../components/Controller/ControllerContext'
 
 export default function useController() {
   const context = useContext(ControllerContext)

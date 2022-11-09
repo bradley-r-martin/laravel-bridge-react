@@ -1,10 +1,11 @@
 import React, { FunctionComponent, useState } from 'react'
 
 import LoadingIndicator from '../../../src/examples/LoadingIndicator'
-import Syntax from '../Syntax/Syntax'
 import useController from '../../hooks/useController'
 import useData from '../../hooks/useData'
+import useExceptions from '../../hooks/useExceptions'
 import useStatus from '../../hooks/useStatus'
+import Syntax from '../Syntax/Syntax'
 
 const Button = ({ onClick, active, children }: any) => {
   const [loading, setLoading] = useState(false)
@@ -144,6 +145,7 @@ const Statuses = () => {
 
 const Debugger: FunctionComponent = () => {
   const [data, updateData, getData] = useData()
+  const [exceptions] = useExceptions()
 
   const [stateKey, setStateKey] = useState('text.var')
 
@@ -231,6 +233,15 @@ const Debugger: FunctionComponent = () => {
               style={{ maxHeight: 100 }}
             >
               <Syntax json={data} />
+            </div>
+          </div>
+          <div className='flex flex-col space-y-1 flex-1'>
+            <div className='text-xs text-slate-500'>Exceptions</div>
+            <div
+              className='bg-slate-100 w-full flex-1 p-2 text-xs overflow-auto'
+              style={{ maxHeight: 100 }}
+            >
+              <Syntax json={exceptions} />
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
-import Controller from '../components/Controller/Controller'
 import React from 'react'
+import Controller from '../components/Controller/Controller'
 
 export default function useController<T extends object>(
   controller: string,

@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 
+import ReactDOM from 'react-dom/client'
 import Bridge from './components/Bridge/Bridge'
 import Controller from './components/Controller/Controller'
 import { Debugger } from './expose'
-import ReactDOM from 'react-dom/client'
 
 const Toggle = () => {
   const [toggle, setToggle] = useState(false)

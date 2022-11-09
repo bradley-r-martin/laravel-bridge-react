@@ -1,8 +1,8 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
-import { Bridge } from '../expose'
-import Controller from '../components/Controller/Controller'
 import React from 'react'
+import Controller from '../components/Controller/Controller'
+import { Bridge } from '../expose'
 
 export default {
   title: 'Controller',
