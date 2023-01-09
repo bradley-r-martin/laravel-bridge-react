@@ -10,6 +10,7 @@ import BridgeContext from './BridgeContext'
 interface BridgeProps {
   children: React.ReactNode
   onRedirect?: (location: string) => void
+  onUnauthorised?: () => void
 }
 
 const Bridge: FunctionComponent<BridgeProps> = (props) => {
@@ -23,7 +24,13 @@ const Bridge: FunctionComponent<BridgeProps> = (props) => {
     }
   }
 
-  const [, dispatchQueue] = hasBridgeQueue(refs, setHtmlResponse, onRedirect)
+  function onUnauthorised() {
+    if (props.onUnauthorised) {
+      props.onUnauthorised()
+    }
+  }
+
+  const [, dispatchQueue] = hasBridgeQueue(refs, setHtmlResponse, onRedirect, onUnauthorised)
 
   function call(ref: MutableRefObject<ControllerReference>, method: string, payload: any) {
     const { dispatchStatus } = ref.current
