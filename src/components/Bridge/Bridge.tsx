@@ -10,7 +10,7 @@ import BridgeContext from './BridgeContext'
 interface BridgeProps {
   children: React.ReactNode
   onRedirect?: (location: string) => void
-  onUnauthorised?: (location: string) => void
+  onUnauthorised?: () => void
 }
 
 const Bridge: FunctionComponent<BridgeProps> = (props) => {
@@ -24,9 +24,9 @@ const Bridge: FunctionComponent<BridgeProps> = (props) => {
     }
   }
 
-  function onUnauthorised(location: string) {
+  function onUnauthorised() {
     if (props.onUnauthorised) {
-      props.onUnauthorised(location)
+      props.onUnauthorised()
     }
   }
 

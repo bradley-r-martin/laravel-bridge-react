@@ -58,7 +58,7 @@ export function hasBridgeQueue(
   refs: BridgeRegistrationState,
   setHtmlResponse: Dispatch<SetStateAction<string | undefined>>,
   onRedirect: (location: string) => void,
-  onUnauthorised: (location: string) => void,
+  onUnauthorised: () => void,
 ) {
   const reducer = useReducer(bridgeQueueReducer, initial)
   const [queued, dispatchQueue] = reducer
@@ -146,7 +146,7 @@ export function hasBridgeQueue(
             setHtmlResponse(response.data)
           } else if (response?.status === 301) {
             // unauthorised
-            onUnauthorised(new URL(response.data.redirect).pathname)
+            onUnauthorised()
           } else if (response?.status === 419) {
             // csrf token expired.
             window.location.reload()
