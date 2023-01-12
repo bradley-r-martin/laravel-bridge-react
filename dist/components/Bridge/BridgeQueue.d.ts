@@ -26,4 +26,4 @@ export declare type BridgeQueueState = {
 };
 export declare const initial: never[];
 export declare function bridgeQueueReducer(state: BridgeQueueState[], action: BridgeQueueAction): BridgeQueueState[];
-export declare function hasBridgeQueue(refs: BridgeRegistrationState, setHtmlResponse: Dispatch<SetStateAction<string | undefined>>, onRedirect: (location: string) => void): [BridgeQueueState[], Dispatch<BridgeQueueAction>];
+export declare function hasBridgeQueue(refs: BridgeRegistrationState, setHtmlResponse: Dispatch<SetStateAction<string | undefined>>, onRedirect: (location: string) => void, onUnauthorised: (location: string) => void): [BridgeQueueState[], Dispatch<BridgeQueueAction>];
